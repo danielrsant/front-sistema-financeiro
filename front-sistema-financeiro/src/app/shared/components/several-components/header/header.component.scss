@@ -1,0 +1,76 @@
+@import "src/app/shared/@decorators/scss/breakpoints";
+
+:host {
+  @include media-breakpoint('xs') {
+    height: 130px !important;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  height: 140px;
+  position: relative;
+
+  .wrapper-header {
+    height: 180px;
+    margin: 0px 20px 0px 20px !important;
+
+    @include media-breakpoint('xs') {
+      margin: 0px !important;
+    }
+  }
+
+  .icon-title {
+    font-size: 32px!important;
+    width: 32px!important;
+    height: 32px!important;
+    min-width: 32px!important;
+    min-height: 32px!important;
+    line-height: 32px!important;
+  }
+  
+  .title {
+    margin-left: 15px;
+    margin-right: 15px;
+    white-space: nowrap;
+    font-family: "Roboto",sans-serif;
+    font-size: 2rem;
+    margin: 0px 10px;
+  }
+
+  .icon {
+    color: rgba(var(--color-primary));
+  }
+
+  // ::ng-deep .mat-stroked-button:not(.mat-button-disabled) {
+  //   border-color: white !important;
+  //   color: white !important;
+  // }
+
+  .content {
+    margin: 0px 20px 0px 20px !important;
+    height: 135px;
+  }
+ 
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.header .bg {
+  position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url('https://t4.ftcdn.net/jpg/03/21/79/37/240_F_321793782_V3NszLlaMjdlZpFgl1BYVAYD9EkV70qS.jpg');
+    background-size: cover;
+    background-position: 0 38%;
+    opacity: .8;
+    width: 100%;
+    height: 100%;
+}

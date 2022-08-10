@@ -1,0 +1,49 @@
+<div id="login" class="inner-scroll" fxLayout="row" fxLayoutAlign="center center">
+
+    <div id="login-intro" fxFlex fxHide fxShow.gt-xs></div>
+
+    <div id="login-form-wrapper" [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}">
+
+        <div id="login-form">
+
+            <div class="logo">
+                <img width="200" src="assets/images/logo.png">
+            </div>
+
+            <div class="title">CRIE SUA CONTA AQUI</div>
+
+            <form fxLayout="column" name="form" [formGroup]="form" novalidate>
+                <div fxFlex fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
+                    <app-input-text fxFlex="49" [formGroup]="formPerson" formcontrolname="nome" [label]="'Nome'"></app-input-text>
+                    <app-input-text fxFlex="49" [formGroup]="formPerson" formcontrolname="sobrenome" [label]="'Sobrenome'"></app-input-text>
+                </div>
+                
+                <app-input-email fxFlex [formGroup]="form" formcontrolname="email"></app-input-email>
+
+                <div fxFlex fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
+                    <app-input-password fxFlex="49" [formGroup]="form" formcontrolname="senha"></app-input-password>
+                    <app-input-password fxFlex="49" [formGroup]="form" formcontrolname="confirmarSenha" 
+                    placeholder="Senha (Confirmar)" label="Senha (Confirmar)"></app-input-password>
+                </div>
+
+                <app-input-datepicker fxFlex [formGroup]="formPerson" formcontrolname="dtNascimento" [label]="'Data de Nascimento'" [max]="dtToday"></app-input-datepicker>
+
+                <app-input-text fxFlex [formGroup]="formPerson" formcontrolname="celular" [label]="'Celular'" [placeholder]="'(99) 9 9999-9999'" [mask]="'(00) 0 0000-0000'"></app-input-text>
+
+                <button mat-raised-button color="primary" class="submit-button" aria-label="ENTRAR"
+                    [disabled]="form.invalid || formPerson.invalid" (click)="onRegister()">
+                    CADASTRAR
+                </button>
+
+                <div class="login" fxLayout="column">
+                    <div class="login-question">Já tem uma conta?</div>
+                    <a class="login-text" [routerLink]="'/login'">Acessar</a>
+                </div>
+
+            </form>
+
+        </div>
+        
+    </div>
+
+</div>

@@ -1,0 +1,90 @@
+<div class="container">
+
+    <mat-sidenav-container class="sidenav-container">
+
+        <mat-sidenav #nav class="sidenav" [mode]="mobileQuery.matches ? 'over' : 'side'">
+
+            <div class="navbar-wrapper">
+                <div class="navbar-brand">
+                    <div class="title"><img width="115" src="assets/images/logo2.png"></div>
+
+                    <span fxLayoutAlign="flex-end">
+                        <button style="margin-top: -8px" #menuActions mat-icon-button [matMenuTriggerFor]="menu2">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu2="matMenu">
+                            <button mat-menu-item (click)="onInfo()">
+                                <mat-icon>info</mat-icon>
+                                <span>Informações</span>
+                            </button>
+                        </mat-menu>
+                    </span>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center" class="navbar-user-logo">
+                <div fxFlex="80px">
+                    <img class="logo" [src]="userProfile$ | async">
+                </div>
+                <div fxFlex fxLayoutAlign="center start" fxLayout="column" class="user-info"> 
+                    <div class="name">
+                        <h4>{{ user?.nome }} {{ user?.sobrenome }}</h4>
+                    </div>
+                    <div class="email">
+                        <h5>{{ user?.email }}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu">
+                <app-sidebar-item *ngFor="let item of items; trackBy: trackByRoute" [item]="item" [level]="0">
+                </app-sidebar-item>
+            </div>
+        </mat-sidenav>
+
+        <mat-sidenav-content style="overflow: hidden"> 
+            <mat-toolbar class="toolbar">
+                <button mat-icon-button (click)="nav.toggle()">
+                    <mat-icon class="icon-white">menu</mat-icon>
+                </button>
+    
+                <span fxFlex fxLayoutAlign="flex-end" class="user">
+
+                    <button fxFlex="none" mat-icon-button [matTooltip]="'Customizar'" #shortcutsOrigin
+                        type="button" (click)="openCustomize()">
+                        <mat-icon class="icon-white">palette</mat-icon> 
+                    </button>
+                    
+                    <button fxFlex="none" mat-icon-button [matTooltip]="'Tela Cheia'"
+                        type="button" (click)="fullScreenOpened ? closeFullscreen() : openFullScreen()">
+                        <mat-icon class="icon-white">open_with</mat-icon> 
+                    </button>
+    
+                    <button #menuUser mat-icon-button [matMenuTriggerFor]="menu">
+                        <mat-icon class="icon-white">person</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="onProfile()">
+                            <mat-icon>account_circle</mat-icon>
+                            <span>Perfil</span>
+                        </button>
+                        <button mat-menu-item (click)="logout()">
+                            <mat-icon>exit_to_app</mat-icon>
+                            <span>Sair</span>
+                        </button>
+                    </mat-menu>
+                </span>
+            </mat-toolbar>
+
+            <div class="content-render">
+                <ng-content class="fullScreen"></ng-content>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+
+<ng-template #shortcutsPanel>
+    <div class="shortcuts-panel p-30">
+        <app-customize [showExamples]="false"></app-customize>
+    </div>
+</ng-template>

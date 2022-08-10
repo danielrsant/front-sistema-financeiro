@@ -1,0 +1,27 @@
+<mat-tab-group mat-align-tabs="start" [selectedIndex]="tabIndex.value" animationDuration="0ms" 
+(selectedIndexChange)="changeTab($event)" color="primary" class="tab-group-generator h-100">
+
+  <mat-tab fxFlex *ngFor="let tab of tabs; let index = index" [label]="tab?.title" class="fullScreen" [perfectScrollbar]>
+
+    <!-- TAB -->
+    <ng-template mat-tab-label>
+      <mat-icon class="tab-icon">{{ tab?.icon }}</mat-icon>
+      <span class="tab-title">{{ tab?.title }}</span>
+      <mat-icon *ngIf="index > 0" class="tab-icon-close" matTooltip="Fechar Aba" (click)="removeTab(index)">cancel
+      </mat-icon>
+    </ng-template>
+    <!-- TAB -->
+
+    <!-- TELAS ESTÁTICAS -->
+    <ng-container *ngFor="let staticTab of staticTabs">
+      <app-renderer *ngIf="tab?.endpoint === staticTab.endpoint" class="full-width full-height dp-block"
+        [component]="staticTab.component" 
+        [tab]="tab">
+      </app-renderer>
+    </ng-container>
+    <!-- TELAS ESTÁTICAS -->
+
+  </mat-tab>
+
+</mat-tab-group>
+  

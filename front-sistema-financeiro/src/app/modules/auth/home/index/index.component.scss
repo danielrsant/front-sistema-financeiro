@@ -1,0 +1,11 @@
+@import "src/app/shared/@decorators/scss/breakpoints";
+
+.card {
+    margin: 25px;
+    height: auto;
+    width: 900px;
+
+    @include media-breakpoint('xs') {
+        width: 100% !important;
+    }
+}

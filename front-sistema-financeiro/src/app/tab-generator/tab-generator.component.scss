@@ -1,0 +1,60 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.tab-group-generator {
+    padding-top: 5px;
+}
+
+.tab-title {
+    margin-right: 10px;
+}
+
+.tab-icon {
+    font-size: 20px !important;
+    padding-right: 10px !important;
+    margin-left: -10px !important;
+}
+
+.tab-icon-close {
+    font-size: 16px;
+    right: -5px !important;
+    position: absolute;
+    margin-right: 10px !important;
+}
+
+.dp-block {
+    display: block !important;
+}
+
+:host ::ng-deep .mat-tab-label {
+    margin: 3px !important;
+    border-radius: 3px !important;
+    border: 1px solid #cfd8e3 !important;
+}
+
+:host ::ng-deep .mat-tab-label-active {
+    background: rgba(var(--color-primary)) !important;
+    color: white !important;
+    opacity: 1 !important;
+    margin: 3px !important;
+    border-radius: 3px !important;
+}
+
+:host ::ng-deep .mat-tab-header {
+    border-bottom: 0 !important;
+}
+
+:host ::ng-deep .mat-ink-bar {
+    background: none !important;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+    height: 100% !important;
+}

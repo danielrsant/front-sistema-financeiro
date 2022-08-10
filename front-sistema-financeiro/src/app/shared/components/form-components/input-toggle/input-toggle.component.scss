@@ -1,0 +1,24 @@
+.label {
+    margin-right: 10px;
+}
+.wrapper {
+    align-self: center;
+    height: 45px;
+}
+
+.mat-slide-toggle-label {
+    display: flex !important;
+    flex: 1 !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    height: inherit !important;
+    cursor: pointer !important;
+    justify-content: start !important;
+}
+
+.mat-slide-toggle-content {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    min-width: 45px !important;
+}

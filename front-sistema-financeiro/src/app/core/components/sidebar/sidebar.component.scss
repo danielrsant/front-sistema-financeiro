@@ -1,0 +1,196 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .sidenav {
+    min-width: 280px;
+    max-width: 280px;
+    overflow-y: auto;
+
+    background-color: #1A202E;
+    background-size: cover;
+    background-position: right;
+    opacity: 1;
+
+    // background-image: linear-gradient(135deg, #686c82, #0f0e13);
+
+    .navbar-wrapper{
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      background-color: #1A202E;
+    
+      .navbar-brand {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        height: 64px;
+        width: 100%;
+        color: white;
+        text-align: start;
+        padding: 20px 15px 15px 15px;
+        font-weight: 400;
+        font-size: 18px;
+        word-wrap: break-word;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+        .title {
+          margin-bottom: 5px;
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .navbar-user-logo {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+      padding: 20px;
+
+      .logo {
+        margin-right: 15px;
+        display: block;
+        height: 69px;
+        width: 75px;
+        border-radius: 50%;
+      }
+  
+      .user-info {
+        text-align: center;
+        color: white;
+  
+        .name {
+          margin-top: 10px;
+          h4 {
+            margin-bottom: 0px;
+          }
+        }
+         
+        .email {
+          color: hsla(0,0%,100%,.7);
+        }
+      }
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: row;
+      height: 50px;
+    
+      text-align: center;
+      align-items: center;
+      margin: 10px 30px 10px 30px;
+      padding: 0 10px 0 10px;
+    
+      font-size: 16px;
+      cursor: pointer;
+    
+      .icon {
+        margin-right: 10px;
+      }
+    
+      .description {
+        margin-top: 5px;
+      }
+    }
+  }
+  
+  .sidenav::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    // background: url('/assets/images/sidenav2.png') no-repeat;
+    background-color: #1A202E;
+    background-size: cover;
+    background-position: right;
+    opacity: 1;
+  }
+}
+
+.item-activated {
+  color: white;
+  background-color: #673AB7;
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  margin: 10px 10px 10px 10px;
+}
+
+.user {
+  flex: 1 1 auto;
+  text-align: end;
+}
+
+.menu { }
+
+.toolbar {
+  border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background-color: #1A202E !important;
+  min-height: 56px;
+  box-shadow: 0 2px 2px rgb(0 0 0 / 5%), 0 1px 0 rgb(0 0 0 / 5%);
+
+  .title {
+    margin-left: 20px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 20px;
+  }
+}
+
+/* Certifica que a toolbar fique no topo do conteúdo à medida que ela rola. */
+.is-mobile .toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+/* Quando o sidenav não estiver fixo, estique o recipiente do sidenav para preencher o espaço disponível. este
+    faz com que `<mat-sidenav-content>` atue como nosso elemento de rolagem para layouts de área de trabalho. */
+.sidenav-container {
+  flex: 1;
+}
+
+/* Quando o sidenav estiver fixo, não limite a altura do contêiner do sidenav. Isso permite que o
+    `<body>` para ser nosso elemento de rolagem para layouts móveis. */
+.is-mobile .sidenav-container {
+  flex: 1 0 auto;
+}
+
+::ng-deep .mat-drawer-inner-container {
+  width: 100% !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  height: auto !important;
+}
+
+.mat-expansion-panel {
+  margin: 10px 20px 0 20px;
+}
+
+.content-render {
+  // overflow: auto !important;
+  height: calc(100% - 64px) !important;
+}
+
+.shortcuts-panel {
+  box-shadow: 0 2px 2px rgb(0 0 0 / 5%), 0 1px 0 rgb(0 0 0 / 5%);
+  border-radius: 5px;
+  background: var(--background-base) !important;
+  transition: 0.3s;
+}
+
+.p-30 {
+  padding: 30px;
+}
+
+.icon-white {
+  color: white;
+}

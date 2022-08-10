@@ -1,0 +1,43 @@
+<div fxFlex fxLayout="column">
+
+    <app-header 
+        [operation]="operation" 
+        [icon]="icon" 
+        [backPage]="true" 
+        [btn]="'Salvar'" 
+        [type]="'form'"
+        [btnDisabled]="form.invalid || !form.dirty ? true : false" 
+        (btnClick)="onSave()" 
+        (btnClose)="close.emit()">
+    </app-header>
+
+    <mat-card fxFlex fxLayout="column" class="content-page-form">
+
+        <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutAlign="space-between">
+            <app-input-text fxFlex 
+                [formGroup]="form" 
+                [formcontrolname]="'descricao'"
+                [label]="'Descrição da Categoria'" 
+                [maxLength]="'80'">
+            </app-input-text>
+        </div>
+
+        <!-- <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutAlign="space-between">
+            <app-input-currency fxFlex 
+            [formGroup]="form" 
+            [formcontrolname]="'limite'"
+            [label]="'Limite da Categoria'" appearance="outline">
+            </app-input-currency>
+        </div> -->
+
+        <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutAlign="space-between">
+            <app-input-toggle fxFlex 
+                [formGroup]="form" 
+                [formcontrolname]="'status'" 
+                [label]="'Status'">
+            </app-input-toggle>
+        </div>
+
+    </mat-card>
+    
+</div>

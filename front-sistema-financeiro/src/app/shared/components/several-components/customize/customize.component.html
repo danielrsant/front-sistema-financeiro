@@ -1,0 +1,85 @@
+<div fxFlex="100" fxLayout="column" fxLayoutGap="10px" class="content">
+
+    <h4 *ngIf="showMessages">Esta é a primeira vez que está utilizando nosso sistema, e queremos deixar a sua cara.</h4>
+
+    <h4 *ngIf="showMessages">Escolha um modo</h4>
+
+    <div fxLayoutAlign="center" *ngIf="selectedStyle$ | async as selectedStyle">
+        <mat-button-toggle-group fxFlex #group="matButtonToggleGroup" (change)="onChangeBtnToggle($event)">
+            <mat-button-toggle fxFlex color="primary" [checked]="!darkTheme" value="light">Claro</mat-button-toggle>
+            <mat-button-toggle fxFlex value="dark" [checked]="darkTheme">Escuro</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+
+    <h4 *ngIf="showMessages">Agora selecione uma cor primária para seu sistema</h4>
+
+    <div fxFlex [fxLayout]="showExamples ? 'row wrap' : 'column'" fxLayoutGap="10px" fxLayoutAlign="center">
+        <div fxFlex fxLayout="center" *ngFor="let color of colorVariables | keyvalue" (click)="selectColor(color.value)">
+            <button fxFlex mat-button [ngStyle]="{ 'background-color': color.key, 'color': 'white' }">
+                {{ color?.value?.description }}
+            </button>
+        </div>
+    </div>
+
+    <h4 *ngIf="showMessages">Por fim, o tipo de formulário</h4>
+
+    <div fxFlex fxLayout="column">
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10px">
+            <app-input-select fxFlex
+                [appearance]="'outline'" 
+                [formGroup]="form" 
+                formcontrolname="appearance"
+                label="Tipo dos campos do sistema" 
+                [data]="formTypes" 
+                [optionClear]="false"
+                valueField="id" 
+                displayField="description"
+                searchField="description"
+                (select)="changeTypeInput($event)">
+            </app-input-select>
+        </div>
+
+        <ng-container *ngIf="showExamples">
+            <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="space-between">
+                <app-input-datepicker-range fxFlex 
+                    [appearance]="form.get('appearance').value" 
+                    [formGroup]="form"
+                    formcontrolnameStart="dtInitial" 
+                    formcontrolnameEnd="dtFinal" 
+                    label="Data">
+                </app-input-datepicker-range>
+    
+                <app-input-text fxFlex 
+                    [appearance]="form.get('appearance').value" 
+                    [formGroup]="form" 
+                    formcontrolname="text"
+                    label="Entrada de Texto">
+                </app-input-text>
+            </div>
+    
+            <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="space-between">
+                <app-input-select fxFlex 
+                    [appearance]="form.get('appearance').value" 
+                    [formGroup]="form"
+                    formcontrolname="select" 
+                    label="Selecione uma Opção" 
+                    [data]="dataRadio" 
+                    valueField="id"
+                    displayField="description" 
+                    searchField="description">
+                </app-input-select>
+    
+                <app-input-autocomplete fxFlex 
+                    [appearance]="form.get('appearance').value" 
+                    [formGroup]="form"
+                    formcontrolname="autocomplete" 
+                    label="Autocomplete">
+                </app-input-autocomplete>
+            </div>
+        </ng-container>
+
+    </div>
+
+
+</div>

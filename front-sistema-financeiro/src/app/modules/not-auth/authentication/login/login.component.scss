@@ -1,0 +1,200 @@
+@import "src/app/shared/@decorators/scss/breakpoints";
+
+:host {
+    width: 100%;
+    height: 100%;
+}
+
+#login {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: url('/assets/images/sidenav.png') no-repeat;
+    background-size: cover;
+
+    @include media-breakpoint('xs') {
+        align-items: start !important;
+        background: var(--background-base) !important;
+
+        .mat-card:not([class*=mat-elevation-z]) {
+            box-shadow: none;
+        }
+    }
+
+    #login-intro {
+        padding: 128px;
+
+        @include media-breakpoint('sm') {
+            padding: 128px 64px;
+        }
+
+        .logo {
+            margin: 55px 0px;
+        }
+
+        .title {
+            font-size: 42px;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        .description {
+            padding-top: 16px;
+            font-size: 14px;
+            max-width: 600px;
+        }
+    }
+
+    #login-form-wrapper {
+        display: flex;
+        align-items: center;
+        width: 500px;
+        min-width: 500px;
+        max-width: 500px;
+        height: 100%;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        background-color: var(--background-base);
+
+        // @include mat-elevation(16);
+
+        @include media-breakpoint('xs') {
+            width: 100%;
+            min-width: 100%;
+            max-width: 100%;
+            height: 100%;
+        }
+
+        #login-form {
+            width: 100%;
+            padding: 2px 48px 48px 48px;
+            
+            @include media-breakpoint('xs') {
+                height: auto;
+                text-align: center;
+                padding: 24px;
+            }
+
+            .logo {
+                margin: 55px 0px;
+                text-align: center;
+            }
+
+            .title {
+                text-align: center;
+                font-size: 18px;
+            }
+
+            .description {
+                padding-top: 8px;
+            }
+
+            form {
+                width: 100%;
+                padding-top: 32px;
+                text-align: center;
+
+                mat-form-field {
+                    width: 100%;
+
+                    @include media-breakpoint('xs') {
+                        width: 80%;
+                    }
+                }
+
+                mat-checkbox {
+                    margin: 0;
+                }
+
+                .remember-forgot-password {
+                    margin-top: 8px;
+
+                    .remember-me {
+                        margin-bottom: 16px
+                    }
+
+                    .forgot-password {
+                        font-size: 13px;
+                        font-weight: 600;
+                        margin-bottom: 16px;
+                        color: rgba(var(--color-primary));
+                    }
+                }
+                .register {
+
+                    .register-question {
+                        font-size: 15px;
+                    }
+
+                    .register-text {
+                        font-weight: 600;
+                        margin-bottom: 16px;
+                        color: rgba(var(--color-primary));
+                    }
+                }
+
+                .submit-button {
+                    width: 100%;
+                    margin: 16px auto;
+                    display: block;
+
+                    color: white;
+
+                    @include media-breakpoint('xs') {
+                        width: 80%;
+                    }
+                }
+            }
+
+            .separator {
+                font-size: 15px;
+                font-weight: 600;
+                margin: 24px auto;
+                position: relative;
+                overflow: hidden;
+                width: 100px;
+                text-align: center;
+
+                .text {
+                    display: inline-flex;
+                    position: relative;
+                    padding: 0 8px;
+                    z-index: 3;
+
+                    &:before,
+                    &:after {
+                        content: '';
+                        display: block;
+                        width: 30px;
+                        position: absolute;
+                        top: 10px;
+                        border-top: 1px solid;
+                    }
+
+                    &:before {
+                        right: 100%;
+                    }
+
+                    &:after {
+                        left: 100%;
+                    }
+                }
+            }
+
+            .register {
+                margin: 32px auto 24px auto;
+                width: 250px;
+                
+                .text {
+                    font-weight: 600;
+                    margin-right: 8px;
+                }
+
+                .link {
+
+                }
+            }
+        }
+    }
+}
+
