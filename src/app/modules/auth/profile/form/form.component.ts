@@ -52,7 +52,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
       id: new FormControl(null),
       nome: new FormControl(null, Validators.required),
       sobrenome: new FormControl(null, Validators.required),
-      dtNascimento: new FormControl(null, Validators.required),
       celular: new FormControl(null, Validators.required),
       status: new FormControl(1),
     });

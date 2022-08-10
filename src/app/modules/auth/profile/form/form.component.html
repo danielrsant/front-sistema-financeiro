@@ -9,13 +9,16 @@
     </app-header>
 
     <mat-card fxFlex fxLayout="column" class="content-page-form profile-padding-card mat-elevation-z0">
-        <div fxFlex fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
+        <div fxFlex fxLayout="row">
             <app-input-text fxFlex [formGroup]="form" formcontrolname="nome" [label]="'Nome'"></app-input-text>
-            <app-input-text fxFlex [formGroup]="form" formcontrolname="sobrenome" [label]="'Sobrenome'"></app-input-text>
         </div>
         
-        <app-input-datepicker fxFlex [formGroup]="form" formcontrolname="dtNascimento" [label]="'Data de Nascimento'" [max]="dtToday"></app-input-datepicker>
+        <div fxFlex fxLayout="row">
+            <app-input-text fxFlex [formGroup]="form" formcontrolname="sobrenome" [label]="'Sobrenome'"></app-input-text>
+        </div>
 
-        <app-input-text fxFlex [formGroup]="form" formcontrolname="celular" [label]="'Celular'" [placeholder]="'(99) 9 9999-9999'" [mask]="'(00) 0 0000-0000'"></app-input-text>
+        <div fxFlex fxLayout="row">
+            <app-input-text fxFlex [formGroup]="form" formcontrolname="celular" [label]="'Celular'" [placeholder]="'(99) 9 9999-9999'" [mask]="'(00) 0 0000-0000'"></app-input-text>
+        </div>
     </mat-card>
 </div> 
