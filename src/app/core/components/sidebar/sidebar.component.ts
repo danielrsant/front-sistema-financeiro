@@ -31,6 +31,7 @@ export const ROUTES: any[] = [
     label: 'GESTÃO', type: 'subheading', children: [
       { route: '/auth/pages/contas', label: 'Contas', icon: 'account_balance_wallet', type: 'link' },
       { route: '/auth/pages/categorias', label: 'Categorias Financeiras', icon: 'category', type: 'link' },
+      { route: '/auth/pages/movimentacoes', label: 'Movimentações', icon: 'import_export', type: 'link' },
     ]
   },
   {

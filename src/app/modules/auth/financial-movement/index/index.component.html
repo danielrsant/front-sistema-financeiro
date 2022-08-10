@@ -1,0 +1,38 @@
+<mat-drawer-container fxFlex>
+
+    <mat-drawer [mode]="'side'" [opened]="openedForm" [position]="'end'" [disableClose]="true" #matDrawer class="full-width">
+      <app-form *ngIf="openedForm"
+        [id]="id"
+        [operation]="operation"
+        (refresh)="onRefresh($event)"
+        (close)="openedForm = false;">
+      </app-form>
+    </mat-drawer>
+  
+    <mat-drawer-content fxLayout="column" id="fullScreen" class="full-height">
+  
+      <app-header
+        [title]="title"
+        [icon]="icon">
+      </app-header>
+  
+      <div class="content-page">
+        <app-data-table
+          [title]="title"
+          [selection]="selection"
+          [data]="dataSource"
+          [columns]="columns"
+          [config]="configuration"
+          (create)="onCreate()"
+          (refresh)="onRefresh($event)"
+          (search)="onSearch($event)"
+          (view)="onView($event)"
+          (update)="onUpdate($event)"
+          (delete)="onDelete($event)"
+          (dialogFilter)="openDialogFilter()">
+        </app-data-table>
+      </div>
+  
+    </mat-drawer-content>
+  
+</mat-drawer-container>

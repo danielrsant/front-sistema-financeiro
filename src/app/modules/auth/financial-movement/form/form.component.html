@@ -1,0 +1,117 @@
+<div fxFlex fxLayout="column">
+  
+  <app-header 
+    [operation]="operation" 
+    [icon]="icon" 
+    [backPage]="true" 
+    [btn]="'Salvar'" 
+    [type]="'form'"
+    [btnDisabled]="form.invalid || !form.dirty ? true : false" 
+    (btnClick)="onSave()" 
+    (btnClose)="close.emit()">
+  </app-header>
+
+  <mat-card fxFlex fxLayout="column" class="content-page-form">
+
+    <div fxFlex fxLayout="row" fxLayoutGap="15px" fxLayout.xs="column" fxLayoutAlign="flex-end">
+      <app-input-toggle fxFlex="200px" fxFlex.xs="100" fxLayout="column" 
+        [formGroup]="form" 
+        formcontrolname="concluido" 
+        [label]="movementTypeParams.statusAccount"
+        (changeValue)="onChangeConcluidoToggleButton($event.checked)">
+      </app-input-toggle>
+
+      <app-input-datepicker fxFlex="45" fxFlex.xs="100" 
+        [formGroup]="form" 
+        [clearOption]="false" 
+        formcontrolname="dtConclusao"
+        label="Selecione a data do pagamento">
+      </app-input-datepicker>
+    </div>
+
+    <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="-15px" fxLayoutGap="15px">
+      <app-input-select fxFlex="150px"
+        [formGroup]="form" 
+        formcontrolname="conta" 
+        label="Conta" 
+        [data]="(accounts$ | async)?.data"
+        valueField="id" 
+        displayField="descricao" 
+        searchField="descricao">
+      </app-input-select>
+
+      <app-input-select fxFlex="150px" 
+        [formGroup]="form" 
+        formcontrolname="tipoMovimentacao" 
+        label="Tipo de movimentação"
+        [data]="(movementTypes$ | async)?.data" 
+        valueField="id" 
+        displayField="descricao" 
+        searchField="descricao">
+      </app-input-select>
+
+      <app-input-text fxFlex 
+        [formGroup]="form" 
+        formcontrolname="descricao" 
+        label="Descrição" 
+        maxLength="150"
+        autocomplete="off">
+      </app-input-text>
+    </div>
+
+    <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="-15px" fxLayoutGap="15px">
+      <app-input-currency fxFlex 
+        [formGroup]="form" 
+        formcontrolname="total"
+        [label]="'Valor da ' + movementTypeParams.title">
+      </app-input-currency>
+
+      <app-input-datepicker fxFlex 
+        [formGroup]="form" 
+        [clearOption]="false" 
+        formcontrolname="dtConta"
+        label="Selecione a data de vencimento">
+      </app-input-datepicker>
+    </div>
+
+    <app-input-select fxFlex 
+      [formGroup]="form" 
+      formcontrolname="categoria" 
+      label="Selecione uma categoria"
+      [data]="(categories$ | async)?.data" 
+      valueField="id" 
+      displayField="descricao" 
+      searchField="descricao" 
+      (search)="onSearch($event)">
+    </app-input-select>
+
+    <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="-15px" fxLayoutGap="15px">
+      <app-input-select fxFlex 
+        [formGroup]="form" 
+        (select)="onChangeSelectRepetitionType($event?.value)"
+        formcontrolname="tipoRepeticao" 
+        label="Tipo de repetição" 
+        [data]="repetitionType" 
+        valueField="id"
+        displayField="descricao" 
+        searchField="descricao">
+      </app-input-select>
+
+      <app-input-number fxFlex 
+        [formGroup]="form" 
+        formcontrolname="repetir"
+        label="Repetir lançamento de conta para os próximos meses (Informe a quantidade de vezes):" 
+        [min]="0">
+      </app-input-number>
+    </div>
+
+    <app-input-datepicker fxFlex 
+      [formGroup]="form" 
+      [clearOption]="true" formcontrolname="dtLembrete"
+      label="Selecione a data de lembrete" 
+      [min]="dtHoje">
+    </app-input-datepicker>
+
+  </mat-card>
+
+</div>

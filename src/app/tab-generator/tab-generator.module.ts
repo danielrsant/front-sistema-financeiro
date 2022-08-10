@@ -7,6 +7,7 @@ import { AccountModule } from '../modules/auth/account/account.module';
 import { CategoryModule } from '../modules/auth/category/category.module';
 import { CustomizeModule } from '../modules/auth/customize/customize.module';
 import { DashboardModule } from '../modules/auth/dashboard/dashboard.module';
+import { FinancialMovementModule } from '../modules/auth/financial-movement/financial-movement.module';
 import { HomeModule } from '../modules/auth/home/home.module';
 import { ProfileModule } from '../modules/auth/profile/profile.module';
 import { SharedModule } from '../shared/shared.module';
@@ -39,6 +40,7 @@ const routes: Routes = [
     CategoryModule,
     AccountModule,
     ProfileModule,
+    FinancialMovementModule,
     //
     RouterModule.forChild(routes)
   ],
