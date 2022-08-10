@@ -1,1 +1,1 @@
-# front-sistema-financeiro
+# PROJETO INTEGRADO SISTEMA FINANCEIRO PESSOAL - PUC MINAS
