@@ -32,6 +32,8 @@ export const ROUTES: any[] = [
       { route: '/auth/pages/contas', label: 'Contas', icon: 'account_balance_wallet', type: 'link' },
       { route: '/auth/pages/categorias', label: 'Categorias Financeiras', icon: 'category', type: 'link' },
       { route: '/auth/pages/movimentacoes', label: 'Movimentações', icon: 'import_export', type: 'link' },
+      { route: '/auth/pages/calendario', label: 'Calendário', icon: 'event', type: 'link' },
+      { route: '/auth/pages/planejamento', label: 'Planejamento', icon: 'card_travel', type: 'link' },
     ]
   },
   {

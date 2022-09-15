@@ -1,0 +1,53 @@
+<div fxFlex fxLayout="column">
+    <div fxFlex fxLayout="row">
+        <h2 mat-dialog-title>Informações</h2>
+        <mat-icon fxFlex fxLayoutAlign="flex-end" class="icon" mat-dialog-close>close</mat-icon>
+    </div>
+
+    <mat-dialog-content fxFlex="100" class="modal-content" fxLayout="row wrap" fxLayoutGap="10px"
+        fxLayoutAlign="space-between" *ngIf="form && form.controls" [perfectScrollbar]>
+
+        <app-input-text fxFlex [formGroup]="form" formcontrolname="tipoMovimentacao" label="Tipo de movimentação">
+        </app-input-text>
+
+        <app-input-text fxFlex [formGroup]="form" formcontrolname="conta" label="Conta">
+        </app-input-text>
+
+        <app-input-currency fxFlex [formGroup]="form" formcontrolname="total"
+            [label]="'Valor'"></app-input-currency>
+
+        <app-input-datepicker fxFlex [formGroup]="form" [clearOption]="false" formcontrolname="dtConta"
+            label="Data">
+        </app-input-datepicker>
+
+        <app-input-datepicker fxFlex [formGroup]="form" [clearOption]="false" formcontrolname="dtConclusao"
+            label="Data de Conclusão">
+        </app-input-datepicker>
+
+        <app-input-text fxFlex [formGroup]="form" formcontrolname="descricao" label="Descrição" maxLength="150"
+            autocomplete="off">
+        </app-input-text>
+
+        <app-input-text fxFlex [formGroup]="form" formcontrolname="categoria" label="Categoria">
+        </app-input-text>
+
+        <app-input-datepicker fxFlex [formGroup]="form" [clearOption]="false" formcontrolname="dtLembrete"
+            label="Data de lembrete">
+        </app-input-datepicker>
+
+        <app-input-number fxFlex [formGroup]="form" formcontrolname="repetir"
+            label="Repetir lançamento de conta para os próximos meses (Informe a quantidade de vezes):" [min]="0">
+        </app-input-number>
+
+        <div fxLayoutGap="30px">
+            <app-input-toggle [formGroup]="form" formcontrolname="concluido" [label]="'Status'">
+            </app-input-toggle>
+
+            <app-input-toggle fxFlex [formGroup]="form" formcontrolname="contaFixa"
+                [label]="'Conta Fixa'">
+            </app-input-toggle>
+        </div>
+
+    </mat-dialog-content>
+ 
+</div>

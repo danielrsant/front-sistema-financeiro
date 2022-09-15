@@ -16,9 +16,9 @@ import { UtilsService } from 'src/app/shared/services/utils.service';
 import { PageConfig } from './page-config';
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.scss'],
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent implements OnInit, OnDestroy {
 

@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 import { AccountModule } from '../modules/auth/account/account.module';
+import { CalendarModule } from '../modules/auth/calendar/calendar.module';
 import { CategoryModule } from '../modules/auth/category/category.module';
 import { CustomizeModule } from '../modules/auth/customize/customize.module';
 import { DashboardModule } from '../modules/auth/dashboard/dashboard.module';
 import { FinancialMovementModule } from '../modules/auth/financial-movement/financial-movement.module';
 import { HomeModule } from '../modules/auth/home/home.module';
+import { PlannerModule } from '../modules/auth/planner/planner.module';
 import { ProfileModule } from '../modules/auth/profile/profile.module';
 import { SharedModule } from '../shared/shared.module';
 import { RendererComponent } from './renderer/renderer.component';
@@ -41,6 +43,8 @@ const routes: Routes = [
     AccountModule,
     ProfileModule,
     FinancialMovementModule,
+    CalendarModule,
+    PlannerModule,
     //
     RouterModule.forChild(routes)
   ],

@@ -2,17 +2,18 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { CategoryComponent } from './category.component';
-import { FormComponent } from './form/form.component';
+import { PlannerComponent } from './planner.component';
+
 
 @NgModule({
   declarations: [
-    CategoryComponent,
-    FormComponent,
+    PlannerComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
   ],
 })
-export class CategoryModule { }
+export class PlannerModule { }
+
+
