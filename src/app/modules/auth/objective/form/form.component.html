@@ -1,0 +1,38 @@
+<div fxFlex fxLayout="column">
+  <app-header 
+    [operation]="operation" 
+    [icon]="icon" 
+    [backPage]="true" 
+    [btn]="'Salvar'" 
+    [type]="'form'"
+    [btnDisabled]="form.invalid || !form.dirty ? true : false" 
+    (btnClick)="onSave()" 
+    (btnClose)="close.emit()">
+  </app-header>
+
+  <mat-card fxFlex fxLayout="column" class="content-page-form">
+    <app-input-text fxFlex="80" 
+      [formGroup]="form" 
+      formcontrolname="descricao" 
+      label="Descrição" 
+      maxLength="100"
+      autocomplete="off">
+    </app-input-text>
+
+    <app-input-currency fxFlex 
+      [formGroup]="form" 
+      formcontrolname="total" 
+      label="Valor do objetivo">
+    </app-input-currency>
+
+    <app-input-datepicker 
+      [formGroup]="form" 
+      [clearOption]="true" 
+      formcontrolname="dtConclusao"
+      label="Selecione a data de conclusao" 
+      [min]="dtHoje">
+    </app-input-datepicker>
+
+    <button mat-raised-button *ngIf="operation === 'EDIT'" color="primary" (click)="openDialog()">Depositar</button>
+  </mat-card>
+</div>

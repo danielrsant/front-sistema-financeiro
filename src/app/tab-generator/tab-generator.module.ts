@@ -10,6 +10,7 @@ import { CustomizeModule } from '../modules/auth/customize/customize.module';
 import { DashboardModule } from '../modules/auth/dashboard/dashboard.module';
 import { FinancialMovementModule } from '../modules/auth/financial-movement/financial-movement.module';
 import { HomeModule } from '../modules/auth/home/home.module';
+import { ObjectiveModule } from '../modules/auth/objective/objective.module';
 import { PlannerModule } from '../modules/auth/planner/planner.module';
 import { ProfileModule } from '../modules/auth/profile/profile.module';
 import { SharedModule } from '../shared/shared.module';
@@ -45,6 +46,7 @@ const routes: Routes = [
     FinancialMovementModule,
     CalendarModule,
     PlannerModule,
+    ObjectiveModule,
     //
     RouterModule.forChild(routes)
   ],

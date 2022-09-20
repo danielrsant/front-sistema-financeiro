@@ -1,0 +1,139 @@
+<div fxFlex fxLayout="column">
+
+  <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+    <app-input-datepicker-range fxFlex="90" style="margin-top: 10px; margin-bottom: -12px;" [appearance]="'outline'"
+      [formGroup]="formFilter" [formcontrolnameStart]="'dtPeriodo1'" [formcontrolnameEnd]="'dtPeriodo2'"
+      [label]="'Período'" (clear)="formFilter.get('dtPeriodo1').setValue(null)">
+    </app-input-datepicker-range>
+  </div>
+
+  <div fxFlex fxLayout="row wrap" fxLayoutAlign="flex-start" class="content">
+    <div fxFlex fxLayout="row wrap" *ngFor="let card of cards">
+      <mat-card fxFlex class="card card-top mat-elevation-z0">
+        <div class="card-header {{card?.color}} card-header-icon">
+          <mat-icon class="card-icon">{{ card?.icon }}</mat-icon>
+        </div>
+        <div class="card-category">
+          <h2 class="card-title">{{ card?.title }}</h2>
+          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="flex-end">
+            <h3 *ngIf="!hide" class="card-subtitle">{{ card?.subTitle }}</h3>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <div fxFlex fxLayout="row" fxLayout.lt-md="column" class="content" style="margin-top: 0px;">
+
+    <mat-card fxFlex fxLayout="column" class="card mat-elevation-z0">
+      <mat-card-title class="chart-title" fxFlex fxLayout="column">
+        <div layout="row" fxLayoutAlign="space-between center">
+          <span fxFlex>Categorias X Gastos</span>
+        </div>
+      </mat-card-title>
+      <div class="chart" class="pad">
+        <mat-divider></mat-divider>
+        <ngx-charts-advanced-pie-chart *ngIf="single && single.length; else noSingle" class="chart-align" [view]="view"
+          [scheme]="{ domain: ['#4556B6', '#F19114', '#993AAF', '#0BB3C8', '#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'] }"
+          [animations]="true" [results]="single" [label]="'Total Gasto'" [gradient]="true"
+          [valueFormatting]="formatDataLabel" [percentageFormatting]="formatDataLabel2">
+        </ngx-charts-advanced-pie-chart>
+
+        <ng-template #noSingle>
+          <div fxFlex fxLayout="column" fxLayoutAlign="center center" style="text-align: center; font-size: 19px; margin-top: 100px; margin-bottom: 30px;">Não há gastos cadastrados neste período</div>
+        </ng-template>
+      </div>
+    </mat-card>
+
+    <mat-card fxFlex fxLayout="column" class="card mat-elevation-z0">
+      <mat-card-title class="chart-title" fxFlex fxLayout="column">
+        <div layout="row" fxLayoutAlign="space-between center">
+          <span fxFlex>Movimentações</span>
+        </div>
+      </mat-card-title>
+      <div class="chart">
+        <mat-divider></mat-divider>
+        <ngx-charts-line-chart *ngIf="times && times.length; else noTimes" class="chart-align" [view]="view" [scheme]="{ domain: [ '#4DAA51', '#E5423E' ] }"
+          [results]="times" [gradient]="true" [animations]="true" [xAxis]="true" [yAxis]="true" [legend]="true"
+          [legendPosition]="legendPosition" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxisLabel]="'Período'"
+          [yAxisLabel]="'Quantidade (R$)'" [xAxisTickFormatting]="axisDate">
+        </ngx-charts-line-chart>
+
+        <ng-template #noTimes>
+          <div fxFlex fxLayout="column" fxLayoutAlign="center center" style="text-align: center; font-size: 19px; margin-top: 100px; margin-bottom: 30px;">Não há movimentações cadastradas neste período</div>
+        </ng-template>
+      </div>
+    </mat-card>
+  </div>
+
+  <div fxFlex fxLayout="row" fxLayout.lt-md="column" class="content" style="margin-top: -5px !important;">
+    <mat-card fxFlex fxLayout="column" class="card mat-elevation-z0">
+      <mat-card-title class="chart-title" fxFlex fxLayout="column">
+        <div layout="row" fxLayoutAlign="space-between center">
+          <span fxFlex>Balanço mensal</span>
+        </div>
+      </mat-card-title>
+      <div fxFlex fxLayout="column" class="chart" class="pad">
+        <mat-divider></mat-divider>
+        <ngx-charts-bar-vertical-stacked *ngIf="multi && multi.length; else noMulti" class="chart-align" [view]="view"
+          [scheme]="{ domain: [ '#4DAA51', '#E5423E' ] }" [results]="multi" [animations]="true" [barPadding]="18"
+          [gradient]="true" [xAxis]="true" [yAxis]="true" [legend]="true" [legendPosition]="legendPosition"
+          [showXAxisLabel]="false" [showYAxisLabel]="false">
+        </ngx-charts-bar-vertical-stacked>
+
+        <ng-template #noMulti>
+          <div fxFlex fxLayout="column" fxLayoutAlign="center center" style="text-align: center; font-size: 19px; margin-top: 100px; margin-bottom: 30px;">Não há movimentações cadastrados neste período</div>
+        </ng-template>
+
+        <span fxFlex *ngIf="multi && multi.length" fxLayout="row" fxLayoutAlign="center" style="margin-top: 10px;">
+          <h2>
+            Balanço atual: <br>
+            <h1>R$ {{ multi[0]?.balanco }}</h1>
+          </h2>
+        </span>
+      </div>
+
+    </mat-card>
+
+    <mat-card fxFlex fxLayout="column" class="card mat-elevation-z0">
+      <mat-card-title class="chart-title" fxLayout="column">
+        <div layout="row" fxLayoutAlign="space-between center">
+          <span fxFlex>Limite de Gastos</span>
+        </div>
+      </mat-card-title>
+      <div class="chart" class="pad">
+        <mat-divider></mat-divider>
+        <ng-container *ngIf="limits && limits.length; else noLimits">
+
+          <mat-nav-list *ngFor="let limit of limits">
+            <mat-list-item-content fxFlex fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between">
+              <div fxFlex fxLayout="row" fxLayoutAlign="start center">
+                <div fxFlex style="margin-right: 40px;">
+                  <mat-icon matListAvatar [ngStyle]="{'color': limit?.color}" style="font-size: 30px; margin-left: 15px;">
+                    {{ limit?.icon }}</mat-icon>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="center start">
+                  <span mat-line style="margin: 0; font-weight: 600; font-size: 18px;">{{ limit?.category}}</span>
+                  <p mat-line>{{ limit?.status}}</p>
+                </div>
+              </div>
+              <div class="chart" fxFlex>
+                <ngx-charts-linear-gauge class="chart-align" [view]="viewGauge" [scheme]="{ domain: [ limit?.color ] }"
+                  [value]="limit?.value" [animations]="true" [previousValue]="limit?.limit" [min]="0" [max]="limit?.max"
+                  [units]="'Reais'">
+                </ngx-charts-linear-gauge>
+              </div>
+            </mat-list-item-content>
+          </mat-nav-list>
+          
+        </ng-container>
+      </div>
+
+      <ng-template #noLimits>
+        <div fxFlex fxLayout="column" fxLayoutAlign="center center" style="text-align: center; font-size: 19px; margin-top: 100px; margin-bottom: 30px;">Não há limites cadastrados neste período</div>
+      </ng-template>
+    </mat-card>
+  </div>
+
+
+</div>

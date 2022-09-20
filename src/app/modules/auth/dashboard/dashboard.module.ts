@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { DashboardComponent } from './index/index.component';
+import { DashboardComponent } from './dashboard.component';
 
 @NgModule({
   declarations: [
