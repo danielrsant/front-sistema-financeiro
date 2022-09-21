@@ -20,9 +20,9 @@ import { UtilsService } from 'src/app/shared/services/utils.service';
 import { PageConfig } from './page-config';
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.scss'],
+  selector: 'app-financial-movement',
+  templateUrl: './financial-movement.component.html',
+  styleUrls: ['./financial-movement.component.scss'],
 })
 export class FinancialMovementComponent implements OnInit, OnDestroy {
 

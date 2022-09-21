@@ -3,7 +3,7 @@ import { CalendarComponent } from '../modules/auth/calendar/calendar.component';
 import { CategoryComponent } from '../modules/auth/category/category.component';
 import { CustomizeComponent } from '../modules/auth/customize/customize.component';
 import { DashboardComponent } from '../modules/auth/dashboard/dashboard.component';
-import { FinancialMovementComponent } from '../modules/auth/financial-movement/index/index.component';
+import { FinancialMovementComponent } from '../modules/auth/financial-movement/financial-movement.component';
 import { HomeComponent } from '../modules/auth/home/index/index.component';
 import { ObjectiveComponent } from '../modules/auth/objective/objective.component';
 import { PlannerComponent } from '../modules/auth/planner/planner.component';

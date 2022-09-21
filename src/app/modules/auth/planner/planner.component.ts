@@ -152,7 +152,25 @@ export class PlannerComponent implements OnInit, OnDestroy {
 
   onSave(): void {
     this._loadingService.show();
-    this._plannerService.create(this.form.value).pipe(takeUntil(this.destroy$))
+
+    const payload = this.form.getRawValue();
+
+    let invalid: string = null;
+    if (payload.categorias?.length) {
+      payload.categorias.forEach(element => {
+        if (element.limite < 0) {
+          invalid = element.descricao;
+        }
+      });
+    }
+
+    if (invalid) {
+      this._toastr.error(`A categoria ${invalid} deve possuir um limite positivo!`);
+      this._loadingService.hide();
+      return;
+    }
+
+    this._plannerService.create(payload).pipe(takeUntil(this.destroy$))
       .subscribe(response => {
         this._loadingService.hide();
         if (!response) {
@@ -160,6 +178,7 @@ export class PlannerComponent implements OnInit, OnDestroy {
         }
         this._toastr.success('Registro salvo com sucesso!');
         this.stepper.selectedIndex = 0;
+        this.form?.get('id')?.setValue(response.id);
       }, err => {
         this._loadingService.hide();
         console.log(err);
