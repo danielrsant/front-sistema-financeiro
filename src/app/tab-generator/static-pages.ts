@@ -15,7 +15,7 @@ export const STATIC_PAGES = [
     { endpoint: 'dashboard', title: 'Dashboard', icon: 'insert_chart_outlined', component:  DashboardComponent},
     { endpoint: 'home', title: 'Informações', icon: 'info', component: HomeComponent },
     { endpoint: 'categorias', title: 'Categorias Financeiras', icon: 'category', component: CategoryComponent },
-    { endpoint: 'contas', title: 'Contas', icon: 'account_balance_wallet', component: AccountComponent },
+    { endpoint: 'carteiras', title: 'Carteiras', icon: 'account_balance_wallet', component: AccountComponent },
     { endpoint: 'perfil', title: 'Perfil', icon: 'account_circle', component: ProfileComponent },
     { endpoint: 'movimentacoes', title: 'Movimentações', icon: 'import_export', component: FinancialMovementComponent },
     { endpoint: 'planejamento', title: 'Planejamento', icon: 'card_travel', component: PlannerComponent },

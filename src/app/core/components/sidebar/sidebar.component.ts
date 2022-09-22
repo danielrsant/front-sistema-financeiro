@@ -31,7 +31,7 @@ export const ROUTES: any[] = [
     label: 'GESTÃO', type: 'subheading', children: [
       { route: '/auth/pages/calendario', label: 'Calendário', icon: 'event', type: 'link' },
       { route: '/auth/pages/categorias', label: 'Categorias Financeiras', icon: 'category', type: 'link' },
-      { route: '/auth/pages/contas', label: 'Contas', icon: 'account_balance_wallet', type: 'link' },
+      { route: '/auth/pages/carteiras', label: 'Carteiras', icon: 'account_balance_wallet', type: 'link' },
       { route: '/auth/pages/movimentacoes', label: 'Movimentações', icon: 'import_export', type: 'link' },
       { route: '/auth/pages/objetivos', label: 'Objetivos', icon: 'done', type: 'link' },
       { route: '/auth/pages/planejamento', label: 'Planejamento', icon: 'card_travel', type: 'link' },
